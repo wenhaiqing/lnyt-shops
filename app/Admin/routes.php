@@ -35,6 +35,6 @@ Route::group([
     $router->put('categories/{id}', 'CategoriesController@update');
     $router->delete('categories/{id}', 'CategoriesController@destroy');
     $router->get('api/categories', 'CategoriesController@apiIndex');
-    
+
 
 });

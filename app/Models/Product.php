@@ -14,7 +14,7 @@ class Product extends Model
         self::TYPE_CROWDFUNDING => '众筹商品',
     ];
     protected $fillable = [
-        'title', 'description', 'image', 'on_sale',
+        'title', 'description', 'image', 'on_sale','long_title',
         'rating', 'sold_count', 'review_count', 'price','type'
     ];
     protected $casts = [
@@ -51,7 +51,7 @@ class Product extends Model
     {
         return $this->hasMany(ProductProperty::class);
     }
-    
+
     public function getGroupedPropertiesAttribute()
     {
         return $this->properties

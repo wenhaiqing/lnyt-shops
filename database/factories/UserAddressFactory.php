@@ -11,7 +11,8 @@ $factory->define(App\Models\UserAddress::class, function (Faker $faker) {
         ["广东省", "深圳市", "福田区"],
     ];
     $address   = $faker->randomElement($addresses);
-
+// 从数据库中随机取一个用户
+    $user = \App\Models\User::query()->where('email_verified', true)->inRandomOrder()->first();
     return [
         'province'      => $address[0],
         'city'          => $address[1],
@@ -20,5 +21,6 @@ $factory->define(App\Models\UserAddress::class, function (Faker $faker) {
         'zip'           => $faker->postcode,
         'contact_name'  => $faker->name,
         'contact_phone' => $faker->phoneNumber,
+        'user_id'  => $user ? $user->id : null,
     ];
 });
